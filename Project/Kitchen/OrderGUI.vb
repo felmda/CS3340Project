@@ -122,4 +122,17 @@ Public Class OrderGUI
         End If
 
     End Sub
+
+    Private Sub btnBft_Click(sender As Object, e As EventArgs) Handles btnBft.Click
+        AddTableItem(btnBft.Text, btnBft.Tag)
+    End Sub
+
+    Private Sub btnBfBr_Click(sender As Object, e As EventArgs) Handles btnBfBr.Click
+        AddTableItem(btnBfBr.Text, btnBfBr.Tag)
+    End Sub
+
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        orderTable.Clear()
+        UpdatePrice()
+    End Sub
 End Class

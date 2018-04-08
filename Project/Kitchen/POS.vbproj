@@ -72,6 +72,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetOrderForm.Designer.vb">
+      <DependentUpon>GetOrderForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GetOrderForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="OrderGUI.vb">
       <SubType>Form</SubType>
     </Compile>

@@ -38,7 +38,7 @@ Partial Class OrderGUI
         Me.Button24 = New System.Windows.Forms.Button()
         Me.Button12 = New System.Windows.Forms.Button()
         Me.Button11 = New System.Windows.Forms.Button()
-        Me.Button10 = New System.Windows.Forms.Button()
+        Me.btnRichShrimp = New System.Windows.Forms.Button()
         Me.btnBfBr = New System.Windows.Forms.Button()
         Me.btnCknBurger = New System.Windows.Forms.Button()
         Me.btnBurger = New System.Windows.Forms.Button()
@@ -55,7 +55,7 @@ Partial Class OrderGUI
         Me.Button13 = New System.Windows.Forms.Button()
         Me.Button14 = New System.Windows.Forms.Button()
         Me.Button15 = New System.Windows.Forms.Button()
-        Me.Button16 = New System.Windows.Forms.Button()
+        Me.btnMozStickx = New System.Windows.Forms.Button()
         Me.btnPtSticker = New System.Windows.Forms.Button()
         Me.btnBreadStx = New System.Windows.Forms.Button()
         Me.tabDrinks = New System.Windows.Forms.TabPage()
@@ -203,7 +203,7 @@ Partial Class OrderGUI
         Me.panelGrill.Controls.Add(Me.Button24)
         Me.panelGrill.Controls.Add(Me.Button12)
         Me.panelGrill.Controls.Add(Me.Button11)
-        Me.panelGrill.Controls.Add(Me.Button10)
+        Me.panelGrill.Controls.Add(Me.btnRichShrimp)
         Me.panelGrill.Controls.Add(Me.btnBfBr)
         Me.panelGrill.Controls.Add(Me.btnCknBurger)
         Me.panelGrill.Controls.Add(Me.btnBurger)
@@ -282,14 +282,15 @@ Partial Class OrderGUI
         Me.Button11.Text = "Button11"
         Me.Button11.UseVisualStyleBackColor = True
         '
-        'Button10
+        'btnRichShrimp
         '
-        Me.Button10.Location = New System.Drawing.Point(133, 189)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(106, 66)
-        Me.Button10.TabIndex = 9
-        Me.Button10.Text = "Button10"
-        Me.Button10.UseVisualStyleBackColor = True
+        Me.btnRichShrimp.Location = New System.Drawing.Point(133, 189)
+        Me.btnRichShrimp.Name = "btnRichShrimp"
+        Me.btnRichShrimp.Size = New System.Drawing.Size(106, 66)
+        Me.btnRichShrimp.TabIndex = 9
+        Me.btnRichShrimp.Tag = "10.99"
+        Me.btnRichShrimp.Text = "Rich Boy Shrimp"
+        Me.btnRichShrimp.UseVisualStyleBackColor = True
         '
         'btnBfBr
         '
@@ -399,7 +400,7 @@ Partial Class OrderGUI
         Me.Panel2.Controls.Add(Me.Button13)
         Me.Panel2.Controls.Add(Me.Button14)
         Me.Panel2.Controls.Add(Me.Button15)
-        Me.Panel2.Controls.Add(Me.Button16)
+        Me.Panel2.Controls.Add(Me.btnMozStickx)
         Me.Panel2.Controls.Add(Me.btnPtSticker)
         Me.Panel2.Controls.Add(Me.btnBreadStx)
         Me.Panel2.Location = New System.Drawing.Point(6, 6)
@@ -452,14 +453,15 @@ Partial Class OrderGUI
         Me.Button15.Text = "Button15"
         Me.Button15.UseVisualStyleBackColor = True
         '
-        'Button16
+        'btnMozStickx
         '
-        Me.Button16.Location = New System.Drawing.Point(245, 16)
-        Me.Button16.Name = "Button16"
-        Me.Button16.Size = New System.Drawing.Size(106, 66)
-        Me.Button16.TabIndex = 18
-        Me.Button16.Text = "Button16"
-        Me.Button16.UseVisualStyleBackColor = True
+        Me.btnMozStickx.Location = New System.Drawing.Point(245, 16)
+        Me.btnMozStickx.Name = "btnMozStickx"
+        Me.btnMozStickx.Size = New System.Drawing.Size(106, 66)
+        Me.btnMozStickx.TabIndex = 18
+        Me.btnMozStickx.Tag = "3.99"
+        Me.btnMozStickx.Text = "Mozzorella Stick"
+        Me.btnMozStickx.UseVisualStyleBackColor = True
         '
         'btnPtSticker
         '
@@ -467,7 +469,7 @@ Partial Class OrderGUI
         Me.btnPtSticker.Name = "btnPtSticker"
         Me.btnPtSticker.Size = New System.Drawing.Size(106, 66)
         Me.btnPtSticker.TabIndex = 17
-        Me.btnPtSticker.Tag = "2.99"
+        Me.btnPtSticker.Tag = "3.99"
         Me.btnPtSticker.Text = "Potstickers"
         Me.btnPtSticker.UseVisualStyleBackColor = True
         '
@@ -784,7 +786,7 @@ Partial Class OrderGUI
     Friend WithEvents Button24 As Button
     Friend WithEvents Button12 As Button
     Friend WithEvents Button11 As Button
-    Friend WithEvents Button10 As Button
+    Friend WithEvents btnRichShrimp As Button
     Friend WithEvents btnBfBr As Button
     Friend WithEvents btnCknBurger As Button
     Friend WithEvents btnBurger As Button
@@ -818,7 +820,7 @@ Partial Class OrderGUI
     Friend WithEvents Button13 As Button
     Friend WithEvents Button14 As Button
     Friend WithEvents Button15 As Button
-    Friend WithEvents Button16 As Button
+    Friend WithEvents btnMozStickx As Button
     Friend WithEvents btnPtSticker As Button
     Friend WithEvents btnBreadStx As Button
     Friend WithEvents btnSendOrder As Button
