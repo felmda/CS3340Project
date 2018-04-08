@@ -22,11 +22,12 @@ Partial Class OrderGUI
    'Do not modify it using the code editor.
    <System.Diagnostics.DebuggerStepThrough()> _
    Private Sub InitializeComponent()
-        Me.tblOrder = New System.Windows.Forms.TableLayoutPanel()
         Me.lblOrder = New System.Windows.Forms.Label()
         Me.lblOrderNum = New System.Windows.Forms.Label()
         Me.spltContainerMain = New System.Windows.Forms.SplitContainer()
-        Me.btnOrder = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.lblTitle = New System.Windows.Forms.Label()
+        Me.btnSendOrder = New System.Windows.Forms.Button()
         Me.tabControlBox = New System.Windows.Forms.TabControl()
         Me.tabGrill = New System.Windows.Forms.TabPage()
         Me.panelGrill = New System.Windows.Forms.Panel()
@@ -73,8 +74,16 @@ Partial Class OrderGUI
         Me.btnWater = New System.Windows.Forms.Button()
         Me.btnLargeDrink = New System.Windows.Forms.Button()
         Me.btnCan = New System.Windows.Forms.Button()
-        Me.lblTitle = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.tblOrder = New System.Windows.Forms.DataGridView()
+        Me.lblSubTotalMoney = New System.Windows.Forms.Label()
+        Me.lblSubTotal = New System.Windows.Forms.Label()
+        Me.lblTotalMoney = New System.Windows.Forms.Label()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.lblTaxMoney = New System.Windows.Forms.Label()
+        Me.lblTax = New System.Windows.Forms.Label()
+        Me.btnVoid = New System.Windows.Forms.Button()
+        Me.btnGet = New System.Windows.Forms.Button()
+        Me.btnCancel = New System.Windows.Forms.Button()
         CType(Me.spltContainerMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.spltContainerMain.Panel1.SuspendLayout()
         Me.spltContainerMain.Panel2.SuspendLayout()
@@ -86,20 +95,8 @@ Partial Class OrderGUI
         Me.Panel2.SuspendLayout()
         Me.tabDrinks.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.tblOrder, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'tblOrder
-        '
-        Me.tblOrder.ColumnCount = 2
-        Me.tblOrder.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 89.32584!))
-        Me.tblOrder.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.67416!))
-        Me.tblOrder.Location = New System.Drawing.Point(27, 79)
-        Me.tblOrder.Name = "tblOrder"
-        Me.tblOrder.RowCount = 2
-        Me.tblOrder.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.40476!))
-        Me.tblOrder.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.59524!))
-        Me.tblOrder.Size = New System.Drawing.Size(356, 66)
-        Me.tblOrder.TabIndex = 0
         '
         'lblOrder
         '
@@ -127,10 +124,19 @@ Partial Class OrderGUI
         '
         'spltContainerMain.Panel1
         '
+        Me.spltContainerMain.Panel1.Controls.Add(Me.btnCancel)
+        Me.spltContainerMain.Panel1.Controls.Add(Me.btnGet)
+        Me.spltContainerMain.Panel1.Controls.Add(Me.btnVoid)
+        Me.spltContainerMain.Panel1.Controls.Add(Me.lblTaxMoney)
+        Me.spltContainerMain.Panel1.Controls.Add(Me.lblTax)
+        Me.spltContainerMain.Panel1.Controls.Add(Me.lblTotalMoney)
+        Me.spltContainerMain.Panel1.Controls.Add(Me.lblTotal)
+        Me.spltContainerMain.Panel1.Controls.Add(Me.lblSubTotalMoney)
+        Me.spltContainerMain.Panel1.Controls.Add(Me.lblSubTotal)
         Me.spltContainerMain.Panel1.Controls.Add(Me.TextBox1)
         Me.spltContainerMain.Panel1.Controls.Add(Me.lblTitle)
-        Me.spltContainerMain.Panel1.Controls.Add(Me.btnOrder)
         Me.spltContainerMain.Panel1.Controls.Add(Me.tblOrder)
+        Me.spltContainerMain.Panel1.Controls.Add(Me.btnSendOrder)
         Me.spltContainerMain.Panel1.Controls.Add(Me.lblOrderNum)
         Me.spltContainerMain.Panel1.Controls.Add(Me.lblOrder)
         '
@@ -141,14 +147,30 @@ Partial Class OrderGUI
         Me.spltContainerMain.SplitterDistance = 399
         Me.spltContainerMain.TabIndex = 3
         '
-        'btnOrder
+        'TextBox1
         '
-        Me.btnOrder.Location = New System.Drawing.Point(289, 502)
-        Me.btnOrder.Name = "btnOrder"
-        Me.btnOrder.Size = New System.Drawing.Size(94, 45)
-        Me.btnOrder.TabIndex = 3
-        Me.btnOrder.Text = "Send Order"
-        Me.btnOrder.UseVisualStyleBackColor = True
+        Me.TextBox1.Location = New System.Drawing.Point(79, 44)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(257, 20)
+        Me.TextBox1.TabIndex = 5
+        '
+        'lblTitle
+        '
+        Me.lblTitle.AutoSize = True
+        Me.lblTitle.Location = New System.Drawing.Point(24, 47)
+        Me.lblTitle.Name = "lblTitle"
+        Me.lblTitle.Size = New System.Drawing.Size(30, 13)
+        Me.lblTitle.TabIndex = 4
+        Me.lblTitle.Text = "Title:"
+        '
+        'btnSendOrder
+        '
+        Me.btnSendOrder.Location = New System.Drawing.Point(302, 512)
+        Me.btnSendOrder.Name = "btnSendOrder"
+        Me.btnSendOrder.Size = New System.Drawing.Size(94, 45)
+        Me.btnSendOrder.TabIndex = 3
+        Me.btnSendOrder.Text = "Send Order"
+        Me.btnSendOrder.UseVisualStyleBackColor = True
         '
         'tabControlBox
         '
@@ -208,7 +230,7 @@ Partial Class OrderGUI
         '
         'Button21
         '
-        Me.Button21.Location = New System.Drawing.Point(351, 263)
+        Me.Button21.Location = New System.Drawing.Point(357, 261)
         Me.Button21.Name = "Button21"
         Me.Button21.Size = New System.Drawing.Size(106, 66)
         Me.Button21.TabIndex = 15
@@ -217,7 +239,7 @@ Partial Class OrderGUI
         '
         'Button22
         '
-        Me.Button22.Location = New System.Drawing.Point(239, 263)
+        Me.Button22.Location = New System.Drawing.Point(245, 261)
         Me.Button22.Name = "Button22"
         Me.Button22.Size = New System.Drawing.Size(106, 66)
         Me.Button22.TabIndex = 14
@@ -226,7 +248,7 @@ Partial Class OrderGUI
         '
         'Button23
         '
-        Me.Button23.Location = New System.Drawing.Point(127, 263)
+        Me.Button23.Location = New System.Drawing.Point(133, 261)
         Me.Button23.Name = "Button23"
         Me.Button23.Size = New System.Drawing.Size(106, 66)
         Me.Button23.TabIndex = 13
@@ -235,7 +257,7 @@ Partial Class OrderGUI
         '
         'Button24
         '
-        Me.Button24.Location = New System.Drawing.Point(15, 263)
+        Me.Button24.Location = New System.Drawing.Point(21, 261)
         Me.Button24.Name = "Button24"
         Me.Button24.Size = New System.Drawing.Size(106, 66)
         Me.Button24.TabIndex = 12
@@ -244,7 +266,7 @@ Partial Class OrderGUI
         '
         'Button12
         '
-        Me.Button12.Location = New System.Drawing.Point(351, 191)
+        Me.Button12.Location = New System.Drawing.Point(357, 189)
         Me.Button12.Name = "Button12"
         Me.Button12.Size = New System.Drawing.Size(106, 66)
         Me.Button12.TabIndex = 11
@@ -253,7 +275,7 @@ Partial Class OrderGUI
         '
         'Button11
         '
-        Me.Button11.Location = New System.Drawing.Point(239, 191)
+        Me.Button11.Location = New System.Drawing.Point(245, 189)
         Me.Button11.Name = "Button11"
         Me.Button11.Size = New System.Drawing.Size(106, 66)
         Me.Button11.TabIndex = 10
@@ -262,7 +284,7 @@ Partial Class OrderGUI
         '
         'Button10
         '
-        Me.Button10.Location = New System.Drawing.Point(127, 191)
+        Me.Button10.Location = New System.Drawing.Point(133, 189)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(106, 66)
         Me.Button10.TabIndex = 9
@@ -271,7 +293,7 @@ Partial Class OrderGUI
         '
         'btnBfBr
         '
-        Me.btnBfBr.Location = New System.Drawing.Point(15, 191)
+        Me.btnBfBr.Location = New System.Drawing.Point(21, 189)
         Me.btnBfBr.Name = "btnBfBr"
         Me.btnBfBr.Size = New System.Drawing.Size(106, 66)
         Me.btnBfBr.TabIndex = 8
@@ -281,7 +303,7 @@ Partial Class OrderGUI
         '
         'btnCknBurger
         '
-        Me.btnCknBurger.Location = New System.Drawing.Point(351, 88)
+        Me.btnCknBurger.Location = New System.Drawing.Point(357, 88)
         Me.btnCknBurger.Name = "btnCknBurger"
         Me.btnCknBurger.Size = New System.Drawing.Size(106, 66)
         Me.btnCknBurger.TabIndex = 7
@@ -291,7 +313,7 @@ Partial Class OrderGUI
         '
         'btnBurger
         '
-        Me.btnBurger.Location = New System.Drawing.Point(239, 88)
+        Me.btnBurger.Location = New System.Drawing.Point(245, 88)
         Me.btnBurger.Name = "btnBurger"
         Me.btnBurger.Size = New System.Drawing.Size(106, 66)
         Me.btnBurger.TabIndex = 6
@@ -301,7 +323,7 @@ Partial Class OrderGUI
         '
         'btnOld
         '
-        Me.btnOld.Location = New System.Drawing.Point(127, 88)
+        Me.btnOld.Location = New System.Drawing.Point(133, 88)
         Me.btnOld.Name = "btnOld"
         Me.btnOld.Size = New System.Drawing.Size(106, 66)
         Me.btnOld.TabIndex = 5
@@ -311,7 +333,7 @@ Partial Class OrderGUI
         '
         'btnBcnBurger
         '
-        Me.btnBcnBurger.Location = New System.Drawing.Point(15, 88)
+        Me.btnBcnBurger.Location = New System.Drawing.Point(21, 88)
         Me.btnBcnBurger.Name = "btnBcnBurger"
         Me.btnBcnBurger.Size = New System.Drawing.Size(106, 66)
         Me.btnBcnBurger.TabIndex = 4
@@ -321,7 +343,7 @@ Partial Class OrderGUI
         '
         'btnMong
         '
-        Me.btnMong.Location = New System.Drawing.Point(351, 16)
+        Me.btnMong.Location = New System.Drawing.Point(357, 16)
         Me.btnMong.Name = "btnMong"
         Me.btnMong.Size = New System.Drawing.Size(106, 66)
         Me.btnMong.TabIndex = 3
@@ -331,7 +353,7 @@ Partial Class OrderGUI
         '
         'btnMushSwiss
         '
-        Me.btnMushSwiss.Location = New System.Drawing.Point(239, 16)
+        Me.btnMushSwiss.Location = New System.Drawing.Point(245, 16)
         Me.btnMushSwiss.Name = "btnMushSwiss"
         Me.btnMushSwiss.Size = New System.Drawing.Size(106, 66)
         Me.btnMushSwiss.TabIndex = 2
@@ -341,7 +363,7 @@ Partial Class OrderGUI
         '
         'btnPP
         '
-        Me.btnPP.Location = New System.Drawing.Point(127, 16)
+        Me.btnPP.Location = New System.Drawing.Point(133, 16)
         Me.btnPP.Name = "btnPP"
         Me.btnPP.Size = New System.Drawing.Size(106, 66)
         Me.btnPP.TabIndex = 1
@@ -351,7 +373,7 @@ Partial Class OrderGUI
         '
         'btnBBQ
         '
-        Me.btnBBQ.Location = New System.Drawing.Point(15, 16)
+        Me.btnBBQ.Location = New System.Drawing.Point(21, 16)
         Me.btnBBQ.Name = "btnBBQ"
         Me.btnBBQ.Size = New System.Drawing.Size(106, 66)
         Me.btnBBQ.TabIndex = 0
@@ -624,21 +646,105 @@ Partial Class OrderGUI
         Me.btnCan.Text = "Can Soda"
         Me.btnCan.UseVisualStyleBackColor = True
         '
-        'lblTitle
+        'tblOrder
         '
-        Me.lblTitle.AutoSize = True
-        Me.lblTitle.Location = New System.Drawing.Point(24, 47)
-        Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(30, 13)
-        Me.lblTitle.TabIndex = 4
-        Me.lblTitle.Text = "Title:"
+        Me.tblOrder.AllowUserToAddRows = False
+        Me.tblOrder.AllowUserToDeleteRows = False
+        Me.tblOrder.AllowUserToResizeColumns = False
+        Me.tblOrder.AllowUserToResizeRows = False
+        Me.tblOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.tblOrder.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
+        Me.tblOrder.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.tblOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tblOrder.Location = New System.Drawing.Point(27, 82)
+        Me.tblOrder.Name = "tblOrder"
+        Me.tblOrder.RowHeadersVisible = False
+        Me.tblOrder.RowTemplate.ReadOnly = True
+        Me.tblOrder.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.tblOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.tblOrder.Size = New System.Drawing.Size(356, 333)
+        Me.tblOrder.TabIndex = 6
         '
-        'TextBox1
+        'lblSubTotalMoney
         '
-        Me.TextBox1.Location = New System.Drawing.Point(79, 44)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(257, 20)
-        Me.TextBox1.TabIndex = 5
+        Me.lblSubTotalMoney.AutoSize = True
+        Me.lblSubTotalMoney.Location = New System.Drawing.Point(323, 432)
+        Me.lblSubTotalMoney.Name = "lblSubTotalMoney"
+        Me.lblSubTotalMoney.Size = New System.Drawing.Size(13, 13)
+        Me.lblSubTotalMoney.TabIndex = 8
+        Me.lblSubTotalMoney.Text = "$"
+        '
+        'lblSubTotal
+        '
+        Me.lblSubTotal.AutoSize = True
+        Me.lblSubTotal.Location = New System.Drawing.Point(24, 432)
+        Me.lblSubTotal.Name = "lblSubTotal"
+        Me.lblSubTotal.Size = New System.Drawing.Size(49, 13)
+        Me.lblSubTotal.TabIndex = 7
+        Me.lblSubTotal.Text = "Subtotal:"
+        '
+        'lblTotalMoney
+        '
+        Me.lblTotalMoney.AutoSize = True
+        Me.lblTotalMoney.Location = New System.Drawing.Point(323, 478)
+        Me.lblTotalMoney.Name = "lblTotalMoney"
+        Me.lblTotalMoney.Size = New System.Drawing.Size(13, 13)
+        Me.lblTotalMoney.TabIndex = 12
+        Me.lblTotalMoney.Text = "$"
+        '
+        'lblTotal
+        '
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.Location = New System.Drawing.Point(24, 478)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(34, 13)
+        Me.lblTotal.TabIndex = 11
+        Me.lblTotal.Text = "Total:"
+        '
+        'lblTaxMoney
+        '
+        Me.lblTaxMoney.AutoSize = True
+        Me.lblTaxMoney.Location = New System.Drawing.Point(323, 456)
+        Me.lblTaxMoney.Name = "lblTaxMoney"
+        Me.lblTaxMoney.Size = New System.Drawing.Size(13, 13)
+        Me.lblTaxMoney.TabIndex = 14
+        Me.lblTaxMoney.Text = "$"
+        '
+        'lblTax
+        '
+        Me.lblTax.AutoSize = True
+        Me.lblTax.Location = New System.Drawing.Point(24, 456)
+        Me.lblTax.Name = "lblTax"
+        Me.lblTax.Size = New System.Drawing.Size(28, 13)
+        Me.lblTax.TabIndex = 13
+        Me.lblTax.Text = "Tax:"
+        '
+        'btnVoid
+        '
+        Me.btnVoid.Location = New System.Drawing.Point(3, 512)
+        Me.btnVoid.Name = "btnVoid"
+        Me.btnVoid.Size = New System.Drawing.Size(94, 45)
+        Me.btnVoid.TabIndex = 15
+        Me.btnVoid.Text = "Void Item"
+        Me.btnVoid.UseVisualStyleBackColor = True
+        '
+        'btnGet
+        '
+        Me.btnGet.Location = New System.Drawing.Point(202, 512)
+        Me.btnGet.Name = "btnGet"
+        Me.btnGet.Size = New System.Drawing.Size(94, 45)
+        Me.btnGet.TabIndex = 16
+        Me.btnGet.Text = "Get Order"
+        Me.btnGet.UseVisualStyleBackColor = True
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Location = New System.Drawing.Point(103, 512)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(94, 45)
+        Me.btnCancel.TabIndex = 17
+        Me.btnCancel.Text = "Cancel Order"
+        Me.btnCancel.UseVisualStyleBackColor = True
         '
         'OrderGUI
         '
@@ -662,37 +768,36 @@ Partial Class OrderGUI
         Me.Panel2.ResumeLayout(False)
         Me.tabDrinks.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
+        CType(Me.tblOrder, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents tblOrder As TableLayoutPanel
-   Friend WithEvents lblOrder As Label
-   Friend WithEvents lblOrderNum As Label
-   Friend WithEvents spltContainerMain As SplitContainer
-   Friend WithEvents tabControlBox As TabControl
-   Friend WithEvents tabGrill As TabPage
-   Friend WithEvents panelGrill As Panel
-   Friend WithEvents Button21 As Button
-   Friend WithEvents Button22 As Button
-   Friend WithEvents Button23 As Button
-   Friend WithEvents Button24 As Button
-   Friend WithEvents Button12 As Button
-   Friend WithEvents Button11 As Button
-   Friend WithEvents Button10 As Button
-   Friend WithEvents btnBfBr As Button
-   Friend WithEvents btnCknBurger As Button
-   Friend WithEvents btnBurger As Button
-   Friend WithEvents btnOld As Button
-   Friend WithEvents btnBcnBurger As Button
-   Friend WithEvents btnMong As Button
-   Friend WithEvents btnMushSwiss As Button
-   Friend WithEvents btnPP As Button
-   Friend WithEvents btnBBQ As Button
-   Friend WithEvents tabApp As TabPage
-   Friend WithEvents Panel2 As Panel
-   Friend WithEvents tabDrinks As TabPage
-   Friend WithEvents btnBft As Button
+    Friend WithEvents lblOrder As Label
+    Friend WithEvents lblOrderNum As Label
+    Friend WithEvents spltContainerMain As SplitContainer
+    Friend WithEvents tabControlBox As TabControl
+    Friend WithEvents tabGrill As TabPage
+    Friend WithEvents panelGrill As Panel
+    Friend WithEvents Button21 As Button
+    Friend WithEvents Button22 As Button
+    Friend WithEvents Button23 As Button
+    Friend WithEvents Button24 As Button
+    Friend WithEvents Button12 As Button
+    Friend WithEvents Button11 As Button
+    Friend WithEvents Button10 As Button
+    Friend WithEvents btnBfBr As Button
+    Friend WithEvents btnCknBurger As Button
+    Friend WithEvents btnBurger As Button
+    Friend WithEvents btnOld As Button
+    Friend WithEvents btnBcnBurger As Button
+    Friend WithEvents btnMong As Button
+    Friend WithEvents btnMushSwiss As Button
+    Friend WithEvents btnPP As Button
+    Friend WithEvents btnBBQ As Button
+    Friend WithEvents tabApp As TabPage
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents tabDrinks As TabPage
+    Friend WithEvents btnBft As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnRLemonade As Button
     Friend WithEvents btnOrange As Button
@@ -716,7 +821,17 @@ Partial Class OrderGUI
     Friend WithEvents Button16 As Button
     Friend WithEvents btnPtSticker As Button
     Friend WithEvents btnBreadStx As Button
-    Friend WithEvents btnOrder As Button
+    Friend WithEvents btnSendOrder As Button
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents lblTitle As Label
+    Friend WithEvents tblOrder As DataGridView
+    Friend WithEvents lblTaxMoney As Label
+    Friend WithEvents lblTax As Label
+    Friend WithEvents lblTotalMoney As Label
+    Friend WithEvents lblTotal As Label
+    Friend WithEvents lblSubTotalMoney As Label
+    Friend WithEvents lblSubTotal As Label
+    Friend WithEvents btnGet As Button
+    Friend WithEvents btnVoid As Button
+    Friend WithEvents btnCancel As Button
 End Class
